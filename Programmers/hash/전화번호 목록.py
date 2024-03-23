@@ -1,6 +1,13 @@
 def solution(phone_book):
-    phone_book.sort()
-    for i in range(len(phone_book) - 1):
-        if phone_book[i] == phone_book[i + 1][:len(phone_book[i])]:
-            return False
+    hash_map = {}
+    for phone in phone_book:
+        hash_map[phone] = 1
+
+    for phone in phone_book:
+        arr = ''
+        for num in phone:
+            arr += num
+            if arr in hash_map and arr != phone:
+                return False
+
     return True
